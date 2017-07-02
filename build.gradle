@@ -1,0 +1,16 @@
+group 'fr.minuskube'
+version '1.0.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.mashape.unirest:unirest-java:1.4.9'
+
+    testCompile 'junit:junit:4.12'
+}
