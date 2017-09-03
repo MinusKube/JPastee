@@ -1,6 +1,31 @@
 # JPastee
 Java Wrapper for the https://paste.ee/ API
 
+### Installation
+
+#### Gradle
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'fr.minuskube:jpastee:1.0.1'
+}
+```
+
+#### Maven
+```xml
+<dependency>
+  <groupId>fr.minuskube</groupId>
+  <artifactId>jpastee</artifactId>
+  <version>1.0.1</version>
+</dependency>
+```
+
+#### Manually
+You can download the latest version on the [Releases page](https://github.com/MinusKube/JPastee/releases) on Github.
+
 ### Example
 ```java
 JPastee pastee = new JPastee("YOUR_API_KEY");
