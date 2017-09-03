@@ -140,6 +140,8 @@ public class JPastee {
      * Get a syntax from the server.
      *
      * @see <a href="https://pastee.github.io/docs/#get-syntax">Pastee Docs: Get syntax</a>
+     * @param id the id of the syntax
+     *
      * @return the response of the request
      */
     public SyntaxResponse getSyntax(int id) {
