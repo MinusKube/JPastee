@@ -66,7 +66,10 @@ public class JPastee {
             JSONObject sectionJson = new JSONObject();
 
             sectionJson.putOpt("name", section.getName());
-            sectionJson.putOpt("syntax", section.getSyntax().getShortName());
+
+            if(section.getSyntax() != null)
+                sectionJson.putOpt("syntax", section.getSyntax().getShortName());
+
             sectionJson.put("contents", section.getContents());
 
             sectionsJson.put(sectionJson);

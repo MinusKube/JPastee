@@ -1,5 +1,9 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
+}
+
 group 'fr.minuskube'
-version '1.0.0'
+version '1.0.1'
 
 apply plugin: 'java'
 
@@ -14,3 +18,6 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 }
+
+jar { archiveName = 'JPastee-' + project.version + '.jar' }
+shadowJar { archiveName = 'JPastee-' + project.version + '-shaded.jar' }
