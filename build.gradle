@@ -8,7 +8,7 @@ version '1.0.2'
 apply plugin: 'java'
 apply plugin: 'maven'
 
-if (project.hasProperty("signing")) {
+if (project.hasProperty("signing.keyId")) {
     apply plugin: 'signing'
 
     signing {
