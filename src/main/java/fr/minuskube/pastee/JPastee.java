@@ -6,15 +6,10 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import fr.minuskube.pastee.data.Paste;
 import fr.minuskube.pastee.data.Syntax;
-import fr.minuskube.pastee.response.PasteResponse;
-import fr.minuskube.pastee.response.Response;
-import fr.minuskube.pastee.response.SubmitResponse;
-import fr.minuskube.pastee.response.SyntaxResponse;
-import fr.minuskube.pastee.response.SyntaxesResponse;
+import fr.minuskube.pastee.response.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -24,7 +19,7 @@ public class JPastee {
     private static final String BASE_URL = "https://api.paste.ee/v1";
     private static final Logger LOGGER = Logger.getLogger("JPastee");
 
-    private List<Syntax> syntaxes = new ArrayList<>();
+    private List<Syntax> syntaxes;
     private String apiKey;
 
     /**
@@ -114,7 +109,7 @@ public class JPastee {
         final String route = "/pastes/" + id;
 
         try {
-            return new Response(get(route).getBody().getObject());
+            return new Response(delete(route).getBody().getObject());
         } catch(UnirestException e) {
             return new Response(e);
         }

@@ -10,10 +10,7 @@ import org.junit.Test;
 
 import java.util.logging.Logger;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class RequestTest {
 
@@ -36,7 +33,7 @@ public class RequestTest {
         SyntaxesResponse resp = this.pastee.listSyntaxes();
 
         if(!resp.isSuccess())
-            logger.severe("Errors: \n" + resp.getErrorString());
+            this.logger.severe("Errors: \n" + resp.getErrorString());
 
         assertTrue(resp.isSuccess());
         assertTrue(resp.getErrors().isEmpty());
@@ -57,19 +54,19 @@ public class RequestTest {
                 .build();
 
         assertTrue(paste.isEncrypted());
-        assertEquals(paste.getDescription(), "Test for JPastee API");
-        assertTrue(paste.getSections().size() == 1);
+        assertEquals("Test for JPastee API", paste.getDescription());
+        assertEquals(1, paste.getSections().size());
 
         Section section = paste.getSections().get(0);
 
-        assertEquals(section.getName(), "JPastee Section Test");
-        assertEquals(section.getContents(), "This is a test for the JPastee API.");
-        assertEquals(section.getSyntax(), this.pastee.getSyntaxes().get(0));
+        assertEquals("JPastee Section Test", section.getName());
+        assertEquals("This is a test for the JPastee API.", section.getContents());
+        assertEquals(this.pastee.getSyntaxes().get(0), section.getSyntax());
 
         SubmitResponse resp = this.pastee.submit(paste);
 
         if(!resp.isSuccess())
-            logger.severe("Errors: \n" + resp.getErrorString());
+            this.logger.severe("Errors: \n" + resp.getErrorString());
 
         assertTrue(resp.isSuccess());
         assertTrue(resp.getErrors().isEmpty());
@@ -77,16 +74,16 @@ public class RequestTest {
         assertNotNull(resp.getId());
         assertNotNull(resp.getLink());
 
-        logger.info("Paste created: " + resp.getLink());
+        this.logger.info("Paste created: " + resp.getLink());
 
-        getPaste(resp.getId());
+        this.getPaste(resp.getId());
     }
 
     public void getPaste(String createdPaste) {
-        PasteResponse resp = pastee.getPaste(createdPaste);
+        PasteResponse resp = this.pastee.getPaste(createdPaste);
 
         if(!resp.isSuccess())
-            logger.severe("Errors: \n" + resp.getErrorString());
+            this.logger.severe("Errors: \n" + resp.getErrorString());
 
         assertTrue(resp.isSuccess());
         assertTrue(resp.getErrors().isEmpty());
@@ -95,17 +92,17 @@ public class RequestTest {
 
         Paste paste = resp.getPaste();
 
-        assertEquals(paste.getId(), createdPaste);
+        assertEquals(createdPaste, paste.getId());
 
         assertTrue(paste.isEncrypted());
-        assertEquals(paste.getDescription(), "Test for JPastee API");
-        assertTrue(paste.getSections().size() == 1);
+        assertEquals("Test for JPastee API", paste.getDescription());
+        assertEquals(1, paste.getSections().size());
 
         Section section = paste.getSections().get(0);
 
-        assertEquals(section.getName(), "JPastee Section Test");
-        assertEquals(section.getContents(), "This is a test for the JPastee API.");
-        assertEquals(section.getSyntax(), this.pastee.getSyntaxes().get(0));
+        assertEquals("JPastee Section Test", section.getName());
+        assertEquals("This is a test for the JPastee API.", section.getContents());
+        assertEquals(this.pastee.getSyntaxes().get(0), section.getSyntax());
 
         assertNotNull(paste.getCreationDate());
     }

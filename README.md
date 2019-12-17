@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile 'fr.minuskube:jpastee:1.0.1'
+    compile 'fr.minuskube:jpastee:1.0.2'
 }
 ```
 
@@ -19,7 +19,7 @@ dependencies {
 <dependency>
   <groupId>fr.minuskube</groupId>
   <artifactId>jpastee</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
